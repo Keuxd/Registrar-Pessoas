@@ -1,15 +1,14 @@
-package awshit;
-
 import java.util.Scanner;
 
 public class Main{
-	static Scanner entrada = new Scanner(System.in); //declaraÁ„o "global" do objeto entrada de tipo Scanner(classe)
+	static Scanner entrada = new Scanner(System.in);//declara√ß√£o "global" do objeto entrada de tipo Scanner(classe)
 	
 	public static void main(String[] args){
 		int escolha, count = 0;
-		Pessoa bruno[] = new Pessoa[6];
+		Pessoa bruno[] = new Pessoa[6]; //declarando um array de objetos do tipo Pessoa;
+
 		
-		 //declarando um array de objetos do tipo Pessoa;
+		 
 		String escolhaPalavra;
 		
 		while(true) {
@@ -18,13 +17,13 @@ public class Main{
 			escolha = entrada.nextInt();
 			
 			while(escolha != 0 && escolha != 1) {//checando a veracidade da entrada
-				System.out.print("Entrada inv·lida, digite outra: ");
+				System.out.print("Entrada inv√°lida, digite outra: ");
 				escolha = entrada.nextInt();
 			}
 			
 			if(escolha == 0) { // registrar
 				if(count == 6) {
-					System.out.println("N˙mero m·ximo de pessoas registradas.");
+					System.out.println("N√∫mero m√°ximo de pessoas registradas.");
 				}
 				else {
 					bruno[count] = new Pessoa();//incializa o objeto bruno[count]
@@ -34,7 +33,7 @@ public class Main{
 			}
 			else if(escolha == 1){//printar
 				if(count == 0) {
-					System.out.println("N„o h· ninguÈm registrado.");
+					System.out.println("N√£o h√° ningu√©m registrado.");
 				}
 				else if(count > 0) {
 					System.out.println("Quem deseja printar?");
@@ -45,7 +44,7 @@ public class Main{
 					escolha = entrada.nextInt();
 				
 					while(escolha < 0 || escolha >= count) {//checando a veracidade dos intupts
-						System.out.println("Entrada inv·lida, digite outra: ");
+						System.out.println("Entrada inv√°lida, digite outra: ");
 						escolha = entrada.nextInt();
 					}
 				
@@ -69,24 +68,26 @@ public class Main{
 
 	static Pessoa registrarPessoa() {//registra/retorna os dados de um objeto de tipo pessoa
 		Pessoa nova = new Pessoa(); 
+		Scanner input = new Scanner(System.in);
 		
-		System.out.print("Digite o nome da pessoa: ");
-		nova.nome = entrada.next();
+		System.out.printf("Digite o nome da pessoa: ");
+		nova.nome = input.nextLine();
 		
-		System.out.print("Digite a idade de "+ nova.nome + ": ");
-		nova.idade = entrada.nextInt();
+		System.out.printf("Digite a idade de %s: ", nova.nome);
+		nova.idade = input.nextInt();
 		
 		return nova;
 	}
 	
-	static int talvez(String escolha) {//retorna um valor baseado no que foi digitado, 1 para sim e 0 para n„o, o 2 È por pura sintaxe, n„o È pra cair l· nem fodendo
-
-		while(escolha.equalsIgnoreCase("n„o") == false && escolha.equalsIgnoreCase("sim") == false) {
-			System.out.println("Entrada inv·lida, digite novamente: ");
-			escolha = entrada.next();
+	static int talvez(String escolha) {//retorna um valor baseado no que foi digitado, 1 para sim e 0 para n√£o, o 2 √© por pura sintaxe, n√£o √© pra cair l√° nem fodendo
+		Scanner input = new Scanner(System.in);
+		
+		while(escolha.equalsIgnoreCase("n√£o") == false && escolha.equalsIgnoreCase("sim") == false) {
+			System.out.println("Entrada inv√°lida, digite novamente: ");
+			escolha = input.next();
 		}
 		
-		if(escolha.equalsIgnoreCase("n„o")) {
+		if(escolha.equalsIgnoreCase("n√£o")) {
 			return 0;
 		}
 		else if(escolha.equalsIgnoreCase("sim")){
